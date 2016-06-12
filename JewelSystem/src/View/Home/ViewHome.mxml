@@ -1,13 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Module xmlns:fx="http://ns.adobe.com/mxml/2009" 
           xmlns:s="library://ns.adobe.com/flex/spark" 
-          xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%" xmlns:Home="View.Home.*">
+          xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%" xmlns:Home="View.Home.*"
+          initialize="module1_initializeHandler(event)" xmlns:Item="View.Item.*">   
     
-    <s:Panel width="100%" height="100%" skinClass="flatSpark.skins.PanelSkin">
+    <s:Panel width="100%" height="100%" skinClass="flatSpark.skins.PanelSkin" title="XX系统管理">
         <s:HGroup width="100%" height="100%" top="10" left="10" right="10" bottom="10">
-            <Home:ItemTabList/>
-            <s:BorderContainer width="100%" height="100%"/>
+            <Item:ItemTabList BtnWidth="180" BtnHeight="30" Layerout="{ItemTabList.Vertical}"/>
+            <s:BorderContainer width="100%" height="100%" id="FContent"/>
         </s:HGroup>
     </s:Panel>
         
+    <s:HGroup width="100%" height="35" verticalAlign="middle" horizontalAlign="right">
+        <s:Label text="欢迎您：" fontFamily="Lato"/>
+        <s:Label text="{FUserName}" color="0xFFFFFF"/>
+        <s:Button skinClass="flatspark.skins.ButtonSkin" label="退出"/>
+    </s:HGroup>
+    
+    <fx:Script>
+        <![CDATA[
+            import View.Item.ItemTabList;
+            import mx.events.FlexEvent;
+            
+            import View.Assign.PanelAssignManager;
+            [Bindable]
+            public var FUserName:String;
+            
+            protected function module1_initializeHandler(event:FlexEvent):void
+            {
+                // TODO Auto-generated method stub
+                var Panel:PanelAssignManager;
+                Panel = new PanelAssignManager();
+                
+                FContent.addElement(Panel);
+            }
+            
+        ]]>
+    </fx:Script>
 </s:Module>
