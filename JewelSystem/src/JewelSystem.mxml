@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+                       xmlns:s="library://ns.adobe.com/flex/spark" 
+                       xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:View="View.*"
+                       minWidth="800" minHeight="600" resize="windowedapplication1_resizeHandler(event)">
+    <fx:Script>
+        <![CDATA[
+            import mx.events.ResizeEvent;
+           
+            protected function windowedapplication1_resizeHandler(event:ResizeEvent):void
+            {
+                // TODO Auto-generated method stub
+                if(FViewMain!=null)
+                {
+                    FViewMain.width = this.width;
+                    FViewMain.height = this.height;
+                }
+            }
+            
+        ]]>
+    </fx:Script>
+    
+    <View:ViewMain id="FViewMain">
+        
+    </View:ViewMain>
+</s:WindowedApplication>
