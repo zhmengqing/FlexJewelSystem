@@ -28,6 +28,7 @@
     <module application="src/JewelSystem.mxml" destPath="View/Home/ViewHome.swf" optimize="true" sourcePath="src/View/Home/ViewHome.mxml"/>
     <module application="src/JewelSystem.mxml" destPath="View/Item/ItemTabList.swf" optimize="true" sourcePath="src/View/Item/ItemTabList.mxml"/>
     <module application="src/JewelSystem.mxml" destPath="View/Item/ItemShopDropList.swf" optimize="true" sourcePath="src/View/Item/ItemShopDropList.mxml"/>
+    <module application="src/JewelSystem.mxml" destPath="View/Item/ItemLine.swf" optimize="true" sourcePath="src/View/Item/ItemLine.mxml"/>
   </modules>
   <workers/>
   <buildCSSFiles/>
