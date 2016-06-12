@@ -19,17 +19,7 @@
       <airExcludes/>
     </application>
   </applications>
-  <modules>
-    <module application="src/JewelSystem.mxml" destPath="View/Home/ItemHomeSummary.swf" optimize="true" sourcePath="src/View/Home/ItemHomeSummary.mxml"/>
-    <module application="src/JewelSystem.mxml" destPath="View/ViewMain.swf" optimize="true" sourcePath="src/View/ViewMain.mxml"/>
-    <module application="src/JewelSystem.mxml" destPath="View/Item/ItemInputLabel.swf" optimize="true" sourcePath="src/View/Item/ItemInputLabel.mxml"/>
-    <module application="src/JewelSystem.mxml" destPath="View/Home/PanelHome.swf" optimize="true" sourcePath="src/View/Home/PanelHome.mxml"/>
-    <module application="src/JewelSystem.mxml" destPath="View/Login/ViewLogin.swf" optimize="true" sourcePath="src/View/Login/ViewLogin.mxml"/>
-    <module application="src/JewelSystem.mxml" destPath="View/Home/ViewHome.swf" optimize="true" sourcePath="src/View/Home/ViewHome.mxml"/>
-    <module application="src/JewelSystem.mxml" destPath="View/Item/ItemTabList.swf" optimize="true" sourcePath="src/View/Item/ItemTabList.mxml"/>
-    <module application="src/JewelSystem.mxml" destPath="View/Item/ItemShopDropList.swf" optimize="true" sourcePath="src/View/Item/ItemShopDropList.mxml"/>
-    <module application="src/JewelSystem.mxml" destPath="View/Item/ItemLine.swf" optimize="true" sourcePath="src/View/Item/ItemLine.mxml"/>
-  </modules>
+  <modules/>
   <workers/>
   <buildCSSFiles/>
   <flashCatalyst validateFlashCatalystCompatibility="false"/>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+          xmlns:s="library://ns.adobe.com/flex/spark" 
+          xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%"
+          top="5" bottom="5" left="5" right="5" xmlns:Home="View.Home.*" xmlns:Login="View.Login.*" xmlns:Item="View.Item.*" xmlns:Assign="View.Assign.*">
+
+    <s:VGroup width="100%" height="100%">
+       <s:BorderContainer width="100%">
+           <s:VGroup  top="5" bottom="5" left="5" right="5">
+               <Item:ItemInputLabel Label="店名："/>
+               <Item:ItemInputLabel Label="密码："/>     
+               <s:Group width="100%" layoutDirection="rtl">
+                   <s:Button label="新增店面" skinClass="flatspark.skins.ButtonSkin"/>            
+               </s:Group>   
+           </s:VGroup>
+       </s:BorderContainer>
+        <s:BorderContainer width="100%">
+            <s:VGroup  top="5" bottom="5" left="5" right="5">
+                <s:HGroup>
+                    <Item:ItemInputLabel Label="编号："/>
+                    <s:Button label="查询" skinClass="flatspark.skins.ButtonSkin"/>  
+                </s:HGroup>
+                <Item:ItemInputLabel Label="名称："/>
+                <Item:ItemInputLabel Label="密码："/>     
+                <s:Group width="100%" layoutDirection="rtl">
+                    <s:Button label="修改信息" skinClass="flatspark.skins.ButtonSkin"/>            
+                </s:Group>   
+            </s:VGroup>
+        </s:BorderContainer>
+    </s:VGroup>
+</s:Group>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:Module xmlns:fx="http://ns.adobe.com/mxml/2009" 
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
           xmlns:s="library://ns.adobe.com/flex/spark" 
           xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:ns="http://flex.apache.org/experimental/ns" xmlns:Login="View.Login.*" xmlns:Item="View.Item.*">
     <fx:Script>
@@ -14,7 +14,7 @@
             
         ]]>
     </fx:Script>
-   
+    
     <s:Panel title="承宇珠宝兑换券" horizontalCenter="0" verticalCenter="0" skinClass="flatspark.skins.PanelSkin" width="60%" height="60%"  textAlign="center">
         <s:VGroup width="100%" height="100%" horizontalAlign="center">
             <s:Spacer height="20%"/>
@@ -24,5 +24,5 @@
             <s:Button click="Login_clickHandler(event)" label="登录" skinClass="flatspark.skins.ButtonSkin" fontSize="20" width="180" height="50"/>
         </s:VGroup>
     </s:Panel>
-   
-</s:Module>
+    
+</s:Group>

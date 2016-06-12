@@ -3,18 +3,18 @@
           xmlns:s="library://ns.adobe.com/flex/spark" 
           xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%"
           top="5" bottom="5" left="5" right="5" xmlns:Item="View.Item.*">
-    <fx:Script>
-        <![CDATA[
-            import flatspark.skins.ButtonSkin;
-        ]]>
-    </fx:Script>
+
     <s:VGroup width="100%" height="100%">
-        <Item:ItemShopDropList/>
-        <Item:ItemInputLabel Label="开始卡号："/>
-        <Item:ItemInputLabel Label="结束卡号："/>
+        <Item:ItemInputLabel Label="姓         名："/>
+        <Item:ItemInputLabel Label="手  机  号："/>
+        <Item:ItemInputLabel Label="购物金额："/>
         <Item:ItemLine/>
-        <s:Label text="1. 每次最大100张，卡号必须连续，如001-011，会一次发11张卡"/>
-        <s:Label text="2. 结束卡号必须大于开始卡号，位数必须相同，如901-999，不能用999-1098"/>
+        <Item:ItemInputLabel Label="卡号1："/>
+        <Item:ItemInputLabel Label="卡号2："/>
+        <Item:ItemInputLabel Label="卡号3："/>
+        <Item:ItemInputLabel Label="卡号4："/>
+        <Item:ItemInputLabel Label="卡号5："/>
+        <Item:ItemInputLabel Label="卡号6："/>
         <s:Group width="100%" layoutDirection="rtl">
             <s:Button label="分配" skinClass="flatspark.skins.ButtonSkin"/>            
         </s:Group>
