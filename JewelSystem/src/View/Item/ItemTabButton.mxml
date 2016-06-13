@@ -3,12 +3,32 @@
                 xmlns:s="library://ns.adobe.com/flex/spark" 
                 xmlns:mx="library://ns.adobe.com/flex/mx" >
     
-    <s:ToggleButton  label="{Label}" width="100%" height="100%" skinClass="flatSpark.skins.ZToggleButtonSkin"/>
+    <s:ToggleButton id="FBtn"  label="{Label}" width="100%" height="100%" skinClass="flatSpark.skins.ZToggleButtonSkin"
+                     selected="{Selected}" click="togglebutton1_clickHandler(event)"/>
     
     <fx:Script>
         <![CDATA[
             [Bindable]
             public var Label:String;
+            [Bindable]
+            public var Selected:Boolean;
+            [Bindable]
+            public var OnClick:Function;
+            public var Index:int;
+            
+            protected function togglebutton1_clickHandler(event:MouseEvent):void
+            {
+                // TODO Auto-generated method stub
+                if(!FBtn.selected)
+                {
+                    FBtn.selected = true;
+                }
+                else
+                {
+                    OnClick(Index);
+                }
+            }
+            
         ]]>
     </fx:Script>
 </s:Module>

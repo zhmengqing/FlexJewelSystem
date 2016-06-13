@@ -18,12 +18,8 @@
     </s:ArrayCollection>
     </s:List>-->
     
-    <s:Group id="FGroup" layout="{FLayerOut}">
-        <Item:ItemTabButton Label="Button 1" width="{BtnWidth}" height="{BtnHeight}" />
-        <Item:ItemTabButton Label="Button 2" width="{BtnWidth}" height="{BtnHeight}"  />
-        <Item:ItemTabButton Label="Button 3" width="{BtnWidth}" height="{BtnHeight}" />
-        <Item:ItemTabButton Label="Button 4" width="{BtnWidth}" height="{BtnHeight}"  />        
-    </s:Group>
+    <s:Group id="FGroup" layout="{FLayerOut}"/> 
+
     
     <!--  <s:ButtonBar dataProvider="{FTabStack}" layout="{FVerticalLayerout}" skinClass="Skin.FlatButtonBarSkin"/>
     
@@ -35,6 +31,7 @@
     </mx:ViewStack>-->
     <fx:Script>
         <![CDATA[
+            
             import spark.layouts.supportClasses.LayoutBase;
             public static const Vertical:int = 0;
             public static const Horizontal:int = 1;
@@ -44,6 +41,13 @@
             public var BtnWidth:Number;
             [Bindable]
             public var BtnHeight:Number;
+            [Bindable]
+            public var OnClick:Function;
+            
+            
+            private var FItemBackVec:Vector.<ItemTabButton>;
+            private var FItemVec:Vector.<ItemTabButton>;
+            
             public function set Layerout(Value:int):void
             {
                 if(Value==0)
@@ -55,6 +59,59 @@
                     FLayerOut = FHorizontalLayerout;
                 }
             }
+            
+            public function set TabArray(Value:Vector.<String>):void
+            {
+                var Index:int;
+                var Count:int;
+                var Item:ItemTabButton;
+                
+                if(FItemVec==null)
+                {
+                    FItemVec = new Vector.<ItemTabButton>;
+                    FItemBackVec = new Vector.<ItemTabButton>;
+                }
+                
+                Count = FItemVec.length;
+                for(Index = 0;Index<Count;Index++)
+                {
+                    FItemBackVec.push(FItemVec.pop());
+                }
+                FGroup.removeAllElements();
+                Count = Value.length;
+                for(Index = 0;Index<Count;Index++)
+                {
+                    Item = FItemBackVec.pop();
+                    if(Item==null)
+                    {
+                        Item = new ItemTabButton();                        
+                    }
+                    FItemVec.push(Item);
+                    Item.width = BtnWidth;
+                    Item.height = BtnHeight;
+                    Item.Label = Value[Index];
+                    Item.Selected = false;
+                    Item.OnClick = OnItemClick;
+                    Item.Index = Index;
+                    FGroup.addElement(Item);
+                }
+                OnItemClick(0);
+            }
+            
+            private function OnItemClick(CurIndex:int):void
+            {
+                var Index:int;
+                var Count:int;
+                Count = FItemVec.length;
+                for(Index = 0;Index<Count;Index++)
+                {
+                    FItemVec[Index].Selected = false;
+                }
+                FItemVec[CurIndex].Selected = true;
+                OnClick(CurIndex);
+            }
+            
+            
         ]]>
     </fx:Script>
 </s:Module>

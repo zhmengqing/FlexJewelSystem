@@ -6,7 +6,7 @@
     
     <s:Panel width="100%" height="100%" skinClass="flatspark.skins.PanelSkin" title="XX系统管理">
         <s:HGroup width="100%" height="100%" top="10" left="10" right="10" bottom="10">
-            <Item:ItemTabList BtnWidth="180" BtnHeight="30" Layerout="{ItemTabList.Vertical}"/>
+            <Item:ItemTabList id="FTabList" BtnWidth="180" BtnHeight="30" Layerout="{ItemTabList.Vertical}" OnClick="{OnTabChange}"/>
             <s:BorderContainer width="100%" height="100%" id="FContent"/>
         </s:HGroup>
     </s:Panel>
@@ -21,21 +21,72 @@
         <![CDATA[
             import mx.events.FlexEvent;
             
-            import View.Assign.PanelAssignManager;
+            import Utils.CONST_Common;
+            
+            import View.Assign.PanelAssign;
             import View.Destroy.PanelDestroyManager;
             import View.Import.PanelImportManager;
             import View.Item.ItemTabList;
-            import View.Query.PanelQueryManager;
+            import View.Management.PanelManageBoss;
+            import View.Query.PanelQuery;
+            
             [Bindable]
             public var FUserName:String;
+            
+            private var FPanelHome:PanelHome;
+            private var FPanelAssign:PanelAssign;
+            private var FPanelQuery:PanelQuery;
+            private var FPanelDestroy:PanelDestroyManager;
+            private var FPanelImport:PanelImportManager;
+            private var FPanelManage:PanelManageBoss;
+            /**管理员类型：普通、店员还是老板*/
+            private var FListId:int =0;
             
             protected function module1_initializeHandler(event:FlexEvent):void
             {
                 // TODO Auto-generated method stub
-                var Panel:PanelImportManager;
-                Panel = new PanelImportManager();
+                FPanelHome = new PanelHome();
+                FPanelAssign = new PanelAssign();
+                FPanelQuery = new PanelQuery();
+                FPanelDestroy = new PanelDestroyManager();
+                FPanelImport = new PanelImportManager();
+                FPanelManage = new PanelManageBoss();
                 
-                FContent.addElement(Panel);
+                FTabList.TabArray = CONST_Common.MainList_ManagerVec;
+            }
+            
+            private function OnTabChange(CurIndex:int):void
+            {
+                FContent.removeAllElements();
+                switch(FListId)
+                {
+                    case 0:
+                        ManagerTabOnChange(CurIndex);
+                        break;
+                }
+                
+            }
+            
+            private function ManagerTabOnChange(CurIndex:int):void
+            {
+                switch(CurIndex)
+                {
+                    case 0:
+                        FContent.addElement(FPanelHome);
+                        break;
+                    case 1:
+                        FContent.addElement(FPanelAssign);
+                        break;
+                    case 2:
+                        FContent.addElement(FPanelQuery);
+                        break;
+                    case 3:
+                        FContent.addElement(FPanelDestroy);
+                        break;
+                    case 4:
+                        FContent.addElement(FPanelImport);
+                        break;
+                }
             }
             
         ]]>
