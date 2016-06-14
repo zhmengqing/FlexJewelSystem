@@ -1,6 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
          xmlns:s="library://ns.adobe.com/flex/spark" 
-         xmlns:mx="library://ns.adobe.com/flex/mx" width="400" height="300">
+         xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%"
+         initialize="group1_initializeHandler(event)" xmlns:Item="View.Item.*"
+         top="5" bottom="5" left="5" right="5">
     
-</s:Group>
+    <fx:Script>
+        <![CDATA[
+            import mx.events.FlexEvent;
+            
+            import Utils.CONST_Common;
+            
+            import View.Item.ItemTabList;
+            
+            private var FManagerType:int = -1;
+            private var FPanelManagerSingle:PanelQueryManagerSingle;
+            private var FPanelManagerArea:PanelQueryManagerArea;
+            private var FPanelShopStatus:PanelQueryShopStatus;
+            private var FPanelShopMobile:PanelQueryShopMobile;
+            private var FPanelBossShop:PanelQueryBossShop;
+            
+            
+            public function set ManagerType(Value:int):void
+            {
+                if(FManagerType == Value) return;
+                
+                FManagerType = Value;               
+                
+                switch(FManagerType)
+                {
+                    case CONST_Common.Type_Manager:
+                        FTabList.TabArray = CONST_Common.QueryList_ManagerVec;
+                        break;
+                    case CONST_Common.Type_Shop:
+                        FTabList.TabArray = CONST_Common.QueryList_ShopVec;
+                        break;
+                    case CONST_Common.Type_Boss:
+                        FTabList.TabArray = CONST_Common.QueryList_BossVec;
+                        break;
+                }
+            }
+            
+            
+            protected function group1_initializeHandler(event:FlexEvent):void
+            {
+                // TODO Auto-generated method stub
+                
+                FPanelManagerSingle = new PanelQueryManagerSingle();
+                FPanelManagerArea = new PanelQueryManagerArea();
+                FPanelShopStatus = new PanelQueryShopStatus();
+                FPanelShopMobile = new PanelQueryShopMobile();
+                FPanelBossShop = new PanelQueryBossShop();
+                    
+            }
+            
+            private function OnTabChange(CurIndex:int):void
+            {
+                FPanel.removeAllElements();
+                switch(FManagerType)
+                {
+                    case CONST_Common.Type_Manager:
+                        ManagerTabOnChange(CurIndex);
+                        break;
+                    case CONST_Common.Type_Shop:
+                        ShopTabOnChange(CurIndex);
+                        break;
+                    case CONST_Common.Type_Boss:
+                        break;
+                }
+            }
+            
+            private function ManagerTabOnChange(CurIndex:int):void
+            {
+                switch(CurIndex)
+                {
+                    case 0:
+                        FPanel.addElement(FPanelManagerSingle);
+                        break;
+                    case 1:
+                        FPanel.addElement(FPanelManagerArea);
+                        break;
+                }
+            }
+            
+            private function ShopTabOnChange(CurIndex:int):void
+            {
+                switch(CurIndex)
+                {
+                    case 0:
+                        FPanel.addElement(FPanelManagerSingle);
+                        break;
+                    case 1:
+                        FPanel.addElement(FPanelShopMobile);
+                        break;
+                    case 2:
+                        FPanel.addElement(FPanelShopStatus);
+                        break;
+                }
+            }
+            
+            private function BossTabOnChange(CurIndex:int):void
+            {
+                switch(CurIndex)
+                {
+                    case 0:
+                        FPanel.addElement(FPanelManagerSingle);
+                        break;
+                    case 1:
+                        FPanel.addElement(FPanelShopMobile);
+                        break;
+                    case 2:
+                        FPanel.addElement(FPanelBossShop);
+                        break;
+                }
+            }
+            
+        ]]>
+    </fx:Script>
+    
+    <Item:ItemTabList id="FTabList" Layerout="{ItemTabList.Horizontal}" OnClick="{OnTabChange}"/>
+    <Item:ItemLine/>
+    <s:Group id="FPanel"/>
+</s:VGroup>

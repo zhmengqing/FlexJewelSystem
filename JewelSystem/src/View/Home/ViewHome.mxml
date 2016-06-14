@@ -34,34 +34,59 @@
             public var FUserName:String;
             
             private var FPanelHome:PanelHome;
-            private var FPanelAssign:PanelAssign;
+            private var FPanelAssign:View.Assign.PanelAssign;
             private var FPanelQuery:PanelQuery;
             private var FPanelDestroy:PanelDestroyManager;
             private var FPanelImport:PanelImportManager;
             private var FPanelManage:PanelManageBoss;
             /**管理员类型：普通、店员还是老板*/
-            private var FListId:int =0;
+            private var FManagerType:int;
             
             protected function module1_initializeHandler(event:FlexEvent):void
             {
                 // TODO Auto-generated method stub
                 FPanelHome = new PanelHome();
-                FPanelAssign = new PanelAssign();
+                FPanelAssign = new View.Assign.PanelAssign();
                 FPanelQuery = new PanelQuery();
                 FPanelDestroy = new PanelDestroyManager();
                 FPanelImport = new PanelImportManager();
                 FPanelManage = new PanelManageBoss();
                 
-                FTabList.TabArray = CONST_Common.MainList_ManagerVec;
+                UpdateManagerType(2);
+            }
+            
+            public function UpdateManagerType(
+                Type:int):void
+            {
+                FManagerType = Type;
+                switch(FManagerType)
+                {
+                    case CONST_Common.Type_Manager:
+                        FTabList.TabArray = CONST_Common.MainList_ManagerVec;
+                        break;
+                    case CONST_Common.Type_Shop:
+                        FTabList.TabArray = CONST_Common.MainList_ShopVec;
+                        break;
+                    case CONST_Common.Type_Boss:
+                            FTabList.TabArray = CONST_Common.MainList_BossVec;
+                            break; 
+                }
             }
             
             private function OnTabChange(CurIndex:int):void
             {
-                FContent.removeAllElements();
-                switch(FListId)
+                FContent.removeAllElements();             
+               
+                switch(FManagerType)
                 {
-                    case 0:
+                    case CONST_Common.Type_Manager:
                         ManagerTabOnChange(CurIndex);
+                        break;
+                    case CONST_Common.Type_Shop:
+                        ShopTabOnChange(CurIndex);
+                        break;
+                    case CONST_Common.Type_Boss:
+                        BossTabOnChange(CurIndex);
                         break;
                 }
                 
@@ -75,10 +100,12 @@
                         FContent.addElement(FPanelHome);
                         break;
                     case 1:
-                        FContent.addElement(FPanelAssign);
+                        FContent.addElement(FPanelAssign);                        
+                        FPanelAssign.ManagerType = FManagerType;
                         break;
                     case 2:
                         FContent.addElement(FPanelQuery);
+                        FPanelQuery.ManagerType = FManagerType;
                         break;
                     case 3:
                         FContent.addElement(FPanelDestroy);
@@ -89,6 +116,43 @@
                 }
             }
             
+            private function ShopTabOnChange(CurIndex:int):void
+            {
+                switch(CurIndex)
+                {
+                    case 0:
+                        FContent.addElement(FPanelHome);
+                        break;
+                    case 1:
+                        FContent.addElement(FPanelAssign);                        
+                        FPanelAssign.ManagerType = FManagerType;
+                        break;
+                    case 2:
+                        FContent.addElement(FPanelQuery);
+                        FPanelQuery.ManagerType = FManagerType;
+                        break;
+                    case 3:
+                        FContent.addElement(FPanelDestroy);
+                        break;
+                }
+            }
+            
+            private function BossTabOnChange(CurIndex:int):void
+            {
+                switch(CurIndex)
+                {
+                    case 0:
+                        FContent.addElement(FPanelHome);
+                        break;
+                    case 1:
+                        FContent.addElement(FPanelQuery);
+                        FPanelQuery.ManagerType = FManagerType;
+                        break;
+                    case 2:
+                        FContent.addElement(FPanelManage);
+                        break;
+                }
+            }
         ]]>
     </fx:Script>
 </s:Module>

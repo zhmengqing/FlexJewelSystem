@@ -9,6 +9,9 @@ package Utils
     public class CONST_Common
     {
         //---- Constants -------------------------------------------------------
+        public static const Type_Manager:int = 0;
+        public static const Type_Shop:int = 1;
+        public static const Type_Boss:int = 2;
         
         public static const MainList_ManagerVec:Vector.<String> = Vector.<String>([
             "首页",

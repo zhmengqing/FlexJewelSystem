@@ -1,6 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
-         xmlns:s="library://ns.adobe.com/flex/spark" 
-         xmlns:mx="library://ns.adobe.com/flex/mx" width="400" height="300">
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+          xmlns:s="library://ns.adobe.com/flex/spark" 
+          xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%"
+          top="5" bottom="5" left="5" right="5" xmlns:Home="View.Home.*" xmlns:Login="View.Login.*" xmlns:Item="View.Item.*" xmlns:Assign="View.Assign.*"
+          initialize="group1_initializeHandler(event)">
     
-</s:Group>
+    <fx:Script>
+        <![CDATA[
+            import mx.events.FlexEvent;
+            
+            import Utils.CONST_Common;
+            
+            private var FManagerType:int = -1;
+            private var FPanelManagerSingle:PanelAssignManagerSingle;
+            private var FPanelManagerArea:PanelAssignManagerArea;
+            private var FPanelShopSingle:PanelAssignShopSingle;
+            private var FPanelShopArea:PanelAssignShopArea;
+            
+            public function set ManagerType(Value:int):void
+            {
+                if(FManagerType == Value) return;
+                    
+                FManagerType = Value;               
+                
+                switch(FManagerType)
+                {
+                    case CONST_Common.Type_Manager:
+                        FTabList.TabArray = CONST_Common.AssignList_ManagerVec;
+                        break;
+                    case CONST_Common.Type_Shop:
+                        FTabList.TabArray = CONST_Common.AssignList_ShopVec;
+                        break;
+                    case CONST_Common.Type_Boss:
+                        break;
+                }
+            }
+            
+            protected function group1_initializeHandler(event:FlexEvent):void
+            {
+                // TODO Auto-generated method stub
+                
+                FPanelManagerSingle = new PanelAssignManagerSingle();
+                FPanelManagerArea = new PanelAssignManagerArea();
+                FPanelShopSingle = new PanelAssignShopSingle();
+                FPanelShopArea = new PanelAssignShopArea();
+                
+            }
+            
+            private function OnTabChange(CurIndex:int):void
+            {
+                FPanel.removeAllElements();
+                switch(FManagerType)
+                {
+                    case CONST_Common.Type_Manager:
+                        ManagerTabOnChange(CurIndex);
+                        break;
+                    case CONST_Common.Type_Shop:
+                        ShopTabOnChange(CurIndex);
+                        break;
+                    case CONST_Common.Type_Boss:
+                        break;
+                }
+            }
+            
+            private function ManagerTabOnChange(CurIndex:int):void
+            {
+                switch(CurIndex)
+                {
+                    case 0:
+                        FPanel.addElement(FPanelManagerSingle);
+                        break;
+                    case 1:
+                        FPanel.addElement(FPanelManagerArea);
+                        break;
+                }
+            }
+            
+            private function ShopTabOnChange(CurIndex:int):void
+            {
+                switch(CurIndex)
+                {
+                    case 0:
+                        FPanel.addElement(FPanelShopSingle);
+                        break;
+                    case 1:
+                        FPanel.addElement(FPanelShopArea);
+                        break;
+                }
+            }
+        ]]>
+    </fx:Script>
+   <Item:ItemTabList id="FTabList" Layerout="{ItemTabList.Horizontal}" OnClick="{OnTabChange}"/>
+   <Item:ItemLine/>
+   <s:Group id="FPanel"/>
+        
+</s:VGroup>

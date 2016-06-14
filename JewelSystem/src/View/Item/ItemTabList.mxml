@@ -19,7 +19,6 @@
     </s:List>-->
     
     <s:Group id="FGroup" layout="{FLayerOut}"/> 
-
     
     <!--  <s:ButtonBar dataProvider="{FTabStack}" layout="{FVerticalLayerout}" skinClass="Skin.FlatButtonBarSkin"/>
     
@@ -31,7 +30,7 @@
     </mx:ViewStack>-->
     <fx:Script>
         <![CDATA[
-            
+            import spark.components.Group;
             import spark.layouts.supportClasses.LayoutBase;
             public static const Vertical:int = 0;
             public static const Horizontal:int = 1;
