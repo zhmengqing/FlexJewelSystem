@@ -1,11 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
           xmlns:s="library://ns.adobe.com/flex/spark" 
           xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%"
-          top="5" bottom="5" left="5" right="5" xmlns:Home="View.Home.*" xmlns:Login="View.Login.*" xmlns:Item="View.Item.*" xmlns:Assign="View.Assign.*">
-    <s:VGroup width="100%" height="100%">
-       <Item:ItemTabList Layerout="{ItemTabList.Horizontal}"/>
+          top="5" bottom="5" left="5" right="5" xmlns:Home="View.Home.*" xmlns:Login="View.Login.*" xmlns:Item="View.Item.*" xmlns:Assign="View.Assign.*"
+          initialize="vgroup1_initializeHandler(event)">
+    <fx:Script>
+        <![CDATA[
+            import mx.events.FlexEvent;
+            
+            import Utils.CONST_Common;
+            
+            private var FPanelAccounts:PanelManageBossAccounts;
+            private var FPanelGlance:PanelManageBossGlance;
+            
+            private function OnTabChange(CurIndex:int):void
+            {
+                FGroup.removeAllElements();
+                switch(CurIndex)
+                {
+                    case 0:
+                        FGroup.addElement(FPanelGlance);
+                        break;
+                    case 1:
+                        FGroup.addElement(FPanelAccounts);
+                        break;
+                }
+            }
+            
+            protected function vgroup1_initializeHandler(event:FlexEvent):void
+            {
+                // TODO Auto-generated method stub
+                FPanelAccounts = new PanelManageBossAccounts();
+                FPanelGlance = new PanelManageBossGlance();
+                FTabList.TabArray = CONST_Common.ManageList_BossVec;
+            }
+            
+        ]]>
+    </fx:Script>
+    <Item:ItemTabList id="FTabList" Layerout="{ItemTabList.Horizontal}" OnClick="{OnTabChange}"/>
+    <Item:ItemLine/>
+    <s:Group id="FGroup"  width="100%" height="100%"/>
       
-        
-    </s:VGroup>
-</s:Group>
+</s:VGroup>

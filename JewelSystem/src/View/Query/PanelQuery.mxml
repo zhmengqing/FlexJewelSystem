@@ -66,6 +66,7 @@
                         ShopTabOnChange(CurIndex);
                         break;
                     case CONST_Common.Type_Boss:
+                        BossTabOnChange(CurIndex);
                         break;
                 }
             }

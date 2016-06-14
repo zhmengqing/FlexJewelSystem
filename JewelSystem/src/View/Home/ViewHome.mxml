@@ -52,7 +52,7 @@
                 FPanelImport = new PanelImportManager();
                 FPanelManage = new PanelManageBoss();
                 
-                UpdateManagerType(2);
+                UpdateManagerType(1);
             }
             
             public function UpdateManagerType(
@@ -68,8 +68,8 @@
                         FTabList.TabArray = CONST_Common.MainList_ShopVec;
                         break;
                     case CONST_Common.Type_Boss:
-                            FTabList.TabArray = CONST_Common.MainList_BossVec;
-                            break; 
+                        FTabList.TabArray = CONST_Common.MainList_BossVec;
+                        break; 
                 }
             }
             
