@@ -1,0 +1,17 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+
+@font-face {
+        
+    src:url("assets/font/YaHei_Consolas.ttf");
+    
+    fontFamily: Yahei; /* 嵌入后的字体名称 */
+    
+    fontStyle: normal;/* 常用值：normal, italic */
+    
+    fontWeight: normal; /* 常用值：normal, bold */
+    
+    advancedAntiAliasing: true;
+    
+} 

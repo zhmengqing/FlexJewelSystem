@@ -3,7 +3,7 @@
           xmlns:s="library://ns.adobe.com/flex/spark" 
           xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%" xmlns:Home="View.Home.*"
           initialize="module1_initializeHandler(event)" xmlns:Item="View.Item.*">   
-    
+    <!--操作主页，包括左边的Tab-->
     <s:Panel width="100%" height="100%" skinClass="flatspark.skins.PanelSkin" title="XX系统管理">
         <s:HGroup width="100%" height="100%" top="10" left="10" right="10" bottom="10">
             <Item:ItemTabList id="FTabList" BtnWidth="180" BtnHeight="30" Layerout="{ItemTabList.Vertical}" OnClick="{OnTabChange}"/>

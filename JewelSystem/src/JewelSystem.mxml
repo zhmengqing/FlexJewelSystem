@@ -3,10 +3,19 @@
                        xmlns:s="library://ns.adobe.com/flex/spark" 
                        xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:View="View.*"
                        minWidth="800" minHeight="600" resize="windowedapplication1_resizeHandler(event)">
+   <!-- <fx:Style source="TFont.css">
+        @namespace View "View.*";
+        @namespace s "library://ns.adobe.com/flex/spark";
+        @namespace mx "library://ns.adobe.com/flex/mx";
+        
+    </fx:Style>-->
     <fx:Script>
         <![CDATA[
             import mx.events.ResizeEvent;
            
+            [Embed(source="E:/FlexProjects/JewelSystem/src/assets/font/YaHei_Consolas.ttf", fontName="Yahei", mimeType="application/x-font")]           
+            private var FFont:Class; 
+            
             protected function windowedapplication1_resizeHandler(event:ResizeEvent):void
             {
                 // TODO Auto-generated method stub

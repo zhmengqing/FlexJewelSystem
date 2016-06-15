@@ -3,7 +3,7 @@
           xmlns:s="library://ns.adobe.com/flex/spark" 
           xmlns:mx="library://ns.adobe.com/flex/mx" width="400" height="50">
     <s:HGroup width="100%" height="100%" verticalAlign="middle">
-        <s:Label text="{Label}" fontFamily="Lato" fontSize="20"/>
+        <s:Label text="{Label}" fontFamily="Lato"  fontSize="20"/>
         <s:TextInput skinClass="flatspark.skins.TextInputSkin" displayAsPassword="{DisplayAsPassword}" width="100%" editable="{Editable}"/>
         
     </s:HGroup>

@@ -58,7 +58,7 @@
                     FLayerOut = FHorizontalLayerout;
                 }
             }
-            
+            /**这个方法必须在as代码中赋值*/
             public function set TabArray(Value:Vector.<String>):void
             {
                 var Index:int;
@@ -96,6 +96,7 @@
                 }
                 OnItemClick(0);
             }
+            
             
             private function OnItemClick(CurIndex:int):void
             {

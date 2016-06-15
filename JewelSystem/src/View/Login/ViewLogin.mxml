@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
           xmlns:s="library://ns.adobe.com/flex/spark" 
-          xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:ns="http://flex.apache.org/experimental/ns" xmlns:Login="View.Login.*" xmlns:Item="View.Item.*">
+          xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:ns="http://flex.apache.org/experimental/ns" xmlns:Login="View.Login.*" xmlns:Item="View.Item.*"
+          initialize="group1_initializeHandler(event)">
     <fx:Script>
         <![CDATA[
+            import mx.events.FlexEvent;
             [Bindable]
-            public var OnClick:Function;
+            public var OnClick:Function;//跳转到操作主页
+            //登录确定
             protected function Login_clickHandler(event:MouseEvent):void
             {
                 // TODO Auto-generated method stub
                 OnClick();
+            }
+            
+            protected function group1_initializeHandler(event:FlexEvent):void
+            {
+                // TODO Auto-generated method stub
+                var font_list:Array = Font.enumerateFonts();  
+                
+                for(var i:int=0; i<font_list.length; i++)  
+                    
+                    trace(Font(font_list[i]).fontName); 
             }
             
         ]]>

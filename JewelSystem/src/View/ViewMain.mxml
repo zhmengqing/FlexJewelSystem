@@ -4,7 +4,9 @@
           xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="800" minHeight="600"
           includeInLayout="true" xmlns:View="View.*" xmlns:Login="View.Login.*" xmlns:Home="View.Home.*">
     
+    <!--登录-->
     <Login:ViewLogin id="FViewLogin" width="100%" height="100%" OnClick="Login_OnClick"/>
+    <!--登录后的操作界面-->
     <Home:ViewHome id="FViewHome" visible="false"/>
     <fx:Script>
         <![CDATA[
